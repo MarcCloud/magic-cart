@@ -1,0 +1,10 @@
+node_modules
+public
+.idea
+*.log
+logs
+www
+build
+dist
+tmp
+temp
