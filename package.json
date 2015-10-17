@@ -4,11 +4,13 @@
   "description": "Example app using cycle js",
   "main": "index.js",
   "scripts": {
+    "dirs": "mkdirp ./public/images ./public/styles ./public/scripts",
     "test": "babel-node test/index | faucet",
     "images": "ncp ./app/images/ ./public/images",
     "css": "stylus ./app/main.styl --out ./public/styles/app.styles.css",
+    "html": "jade ./app/index.jade -o ./public",
     "start": "http-server -p 3000 ./public",
-    "prebuild": "npm run images && npm run css",
+    "prebuild": "npm run dirs && npm run html && npm run images && npm run css",
     "build": "browserify -d ./app/index.js -t babelify > ./public/scripts/app.bundle.js"
   },
   "keywords": [
@@ -27,12 +29,14 @@
     "faucet": "0.0.1",
     "glob": "^5.0.15",
     "http-server": "~0.8.0",
+    "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "stylus": "^0.52.0",
     "tape": "~4.2.0"
   },
   "dependencies": {
     "@cycle/core": "~3.1.0",
-    "@cycle/dom": "~5.0.1"
+    "@cycle/dom": "~5.0.1",
+    "bootstrap-styl": "^4.0.5"
   }
 }
